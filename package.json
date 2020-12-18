@@ -34,10 +34,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dawidmwojciechowski/projekt-golden.git"
+    "url": "git+https://github.com/dawidmwojciechowski/javascript-prework.git"
   },
   "bugs": {
-    "url": "https://github.com/dawidmwojciechowski/projekt-golden/issues"
+    "url": "https://github.com/dawidmwojciechowski/javascript-prework/issues"
   },
-  "homepage": "https://github.com/dawidmwojciechowski/projekt-golden#readme"
+  "homepage": "https://github.com/dawidmwojciechowski/javascript-prework#readme"
 }
