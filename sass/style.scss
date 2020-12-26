@@ -2,6 +2,8 @@ body {
     background-color: beige;
     text-align: center;
     padding: 20px;
+    font-family: 'Audiowide', cursive;
+    
 }
 
 ol {
@@ -11,7 +13,15 @@ ol {
     color:chocolate;
 }
 
-.container{
+#container{
     margin: 40px;
 }
 
+#messages {
+    padding: 40px;
+}
+
+#button-rock, #button-paper, #button-scissors {
+    background-color: cadetblue;
+    color: cornsilk;
+}
