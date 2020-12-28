@@ -5,7 +5,7 @@ buttonPaper = document.getElementById('button-paper');
 buttonScissors = document.getElementById('button-scissors');
 
 /**
- * Describe this function...
+ * Klik
  */
 function buttonClicked(argButtonName) {
   clearMessages();
@@ -14,7 +14,7 @@ function buttonClicked(argButtonName) {
   var argMoveId, argPlayerMove, argComputerMove, computerMove, playerMove, randomNumber, playerInput;
 
 /**
- * Describe this function...
+ * Konsekwencja działania przycisków
  */
 function getMoveName(argMoveId) {
   console.log('wywołano funkcję getMoveName z argumentem: ' + argMoveId);
@@ -31,7 +31,7 @@ function getMoveName(argMoveId) {
 }
 
 /**
- * Describe this function...
+ * Publikacja wyniku
  */
 function displayResult(argPlayerMove, argComputerMove) {
   console.log('wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
@@ -63,3 +63,8 @@ buttonPaper = document.getElementById('button-paper');
 buttonPaper.addEventListener('click', function(){ buttonClicked('papier'); });
 buttonScissors = document.getElementById('button-scissors');
 buttonScissors.addEventListener('click', function(){ buttonClicked('nożyce'); });
+
+/**
+ * sumowanie wyników
+ */
+
