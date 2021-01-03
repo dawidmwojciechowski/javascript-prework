@@ -1,70 +1,72 @@
-var argButtonName, buttonPaper, buttonRock, buttonScissors, buttonTest;
+/* REFERENCJE DO HTML-A */
+const buttonRock = document.getElementById('button-rock');
+const buttonPaper = document.getElementById('button-paper');
+const buttonScissors = document.getElementById('button-scissors');
+const statsNumbers = document.querySelector('#numbers span');
+const statsWins = document.querySelector('#wins span');
+const statsLosses = document.querySelector('#losses span');
+const statsDraws = document.querySelector('#draws span');
 
-buttonRock = document.getElementById('button-rock');
-buttonPaper = document.getElementById('button-paper');
-buttonScissors = document.getElementById('button-scissors');
+// informacje o graczu
+const gameSummary = {
+    numbers: 0,
+    wins: 0,
+    losses: 0,
+    draws: 0
+}
 
 /**
  * Klik
  */
-function buttonClicked(argButtonName) {
-  clearMessages();
-  console.log(argButtonName + ' został kliknięty');
 
-  var argMoveId, argPlayerMove, argComputerMove, computerMove, playerMove, randomNumber, playerInput;
+function buttonClicked(playerMove) {
 
-/**
- * Konsekwencja działania przycisków
- */
-function getMoveName(argMoveId) {
-  console.log('wywołano funkcję getMoveName z argumentem: ' + argMoveId);
-  if (argMoveId == 1) {
-    return 'kamień';
-  } else if (argMoveId == 2) {
-    return 'papier';
-  } else if (argMoveId == 3) {
-    return 'nożyce';
-  } else {
-    printMessage('Nie znam ruchu o id ' + argMoveId + '. Zakładam, że chodziło o "kamień".');
-    return 'kamień';
-  }
+    /* Funkcja konwertująca wybór w formie liczby na formę tekstową (1 ->  kamień) */
+    function getMoveName(argMoveId) {
+        if (argMoveId === 1) return 'kamień';
+        else if (argMoveId === 2) return 'papier';
+        else if (argMoveId === 3) return 'nożyce';
+    }
+
+    function renderStats() {
+        statsNumbers.innerHTML = gameSummary.numbers
+        statsWins.innerHTML = gameSummary.wins
+        statsLosses.innerHTML = gameSummary.losses 
+        statsDraws.innerHTML = gameSummary.draws
+    }
+
+    /**
+     * Publikacja wyniku
+     */
+    function displayResult(argPlayerMove, argComputerMove) {
+    if (
+        (argPlayerMove == 'papier' && argComputerMove == 'kamień') || 
+        (argPlayerMove == 'kamień' && argComputerMove == 'nożyce') || 
+        (argPlayerMove == 'nożyce' && argComputerMove == 'papier')) {
+        printMessage('Wygrywasz!');
+        gameSummary.wins++;
+    } else if (argPlayerMove === argComputerMove) {
+        gameSummary.draws++;
+    } else {
+        printMessage('Przegrywasz :(');
+        gameSummary.loses++;
+    }
+        printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
+        renderStats()
+    }
+
+    /* PROCES GRY */
+    clearMessages();
+    gameSummary.numbers++;
+
+    // ustalanie wyboru komputera */
+    const randomNumber = Math.floor(Math.random() * 3 + 1);
+    const computerMove = getMoveName(randomNumber);
+
+    // ustalenie i publikacja wybiku
+    displayResult(playerMove, computerMove);
 }
 
-/**
- * Publikacja wyniku
- */
-function displayResult(argPlayerMove, argComputerMove) {
-  console.log('wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
-  if (argPlayerMove == 'papier' && argComputerMove == 'kamień') {
-    printMessage('Wygrywasz!');
-  } else if (argPlayerMove == 'kamień' && argComputerMove == 'nożyce') {
-    printMessage('Wygrywasz!');
-  } else if (argPlayerMove == 'nożyce' && argComputerMove == 'papier') {
-    printMessage('Wygrywasz!');
-  } else if (argPlayerMove == argComputerMove) {
-    printMessage('Remis!');
-  } else {
-    printMessage('Przegrywasz :(');
-  }
-  printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
-}
-playerMove = argButtonName;
-console.log('ruch gracza to: ' + playerMove);
-randomNumber = Math.floor(Math.random() * 3 + 1);
-console.log('wylosowana liczba to: ' + randomNumber);
-computerMove = getMoveName(randomNumber);
-console.log('ruch komputera to: ' + computerMove);
-displayResult(playerMove, computerMove);
-}
-
-buttonRock = document.getElementById('button-rock');
 buttonRock.addEventListener('click', function(){ buttonClicked('kamień'); });
-buttonPaper = document.getElementById('button-paper');
 buttonPaper.addEventListener('click', function(){ buttonClicked('papier'); });
-buttonScissors = document.getElementById('button-scissors');
 buttonScissors.addEventListener('click', function(){ buttonClicked('nożyce'); });
-
-/**
- * sumowanie wyników
- */
-
