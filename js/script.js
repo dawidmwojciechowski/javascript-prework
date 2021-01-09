@@ -2,10 +2,10 @@
 const buttonRock = document.getElementById('button-rock');
 const buttonPaper = document.getElementById('button-paper');
 const buttonScissors = document.getElementById('button-scissors');
-const statsNumbers = document.querySelector('#numbers span');
-const statsWins = document.querySelector('#wins span');
-const statsLosses = document.querySelector('#losses span');
-const statsDraws = document.querySelector('#draws span');
+const statsNumbers = document.querySelector('.numbers span');
+const statsWins = document.querySelector('.wins span');
+const statsLosses = document.querySelector('.losses span');
+const statsDraws = document.querySelector('.draws span');
 
 // informacje o graczu
 const gameSummary = {
@@ -49,7 +49,7 @@ function buttonClicked(playerMove) {
         gameSummary.draws++;
     } else {
         printMessage('Przegrywasz :(');
-        gameSummary.loses++;
+        gameSummary.losses++;
     }
         printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
         renderStats()
